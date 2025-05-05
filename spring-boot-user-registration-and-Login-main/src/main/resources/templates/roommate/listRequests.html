@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Admin Panel - Roommate Requests</title>
+    <link rel="stylesheet" th:href="@{/css/listrequeststyle.css}">
+</head>
+<body>
+<header>
+    <h1>Pending Roommate Requests</h1>
+</header>
+<div>
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+<!--            <th>Email</th>-->
+<!--            <th>City</th>-->
+
+            <th>Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="request : ${requests}">
+            <td th:text="${request.name}"></td>
+<!--            <td th:text="${request.email}"></td>-->
+<!--            <td th:text="${request.city}"></td>-->
+
+            <td>
+                <form th:action="@{'/admin/approved/' + ${request.id}}" method="post">
+                    <button type="submit">Approve</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Roommate Details</title>
+    <link rel="stylesheet" th:href="@{/css/roommatedetails.css}">
+</head>
+<body>
+<header>
+    <h1>Roommate Details</h1>
+</header>
+<div class="details-container" >
+
+    <div class="card-image">
+        User Profile
+        <img th:src="@{/roommate/{id}/photo(id=${roommate.id})}" alt="Photo" class="roommate-photo">
+    </div>
+    <div class="card-image">
+        Room Photo
+        <img th:src="@{/roommate/{id}/photoRoom(id=${roommate.id})}" alt="Photo" class="roommate-photo">
+    </div>
+    <div class="details-section">
+        <h2 th:text="${roommate.name}"></h2>
+        <p><strong>Gender:</strong> <span th:text="${roommate.gender}"></span></p>
+        <p><strong>Age:</strong> <span th:text="${roommate.age}"></span></p>
+        <p><strong>Occupation:</strong> <span th:text="${roommate.occupation}"></span></p>
+        <p><strong>Phone Number:</strong> <span th:text="${roommate.phoneNumber}"></span></p>
+        <p><strong>Education:</strong> <span th:text="${roommate.educational}"></span></p>
+        <p><strong>Email:</strong> <span th:text="${roommate.email}"></span></p>
+        <p><strong>Address:</strong> <span th:text="${roommate.address}"></span></p>
+        <p><strong>Street:</strong> <span th:text="${roommate.street}"></span></p>
+        <p><strong>City:</strong> <span th:text="${roommate.city}"></span></p>
+        <p><strong>State:</strong> <span th:text="${roommate.state}"></span></p>
+        <p><strong>Lifestyle:</strong> <span th:text="${roommate.lifeStyle}"></span></p>
+        <p><strong>Living Habits:</strong> <span th:text="${roommate.livingHabits}"></span></p>
+        <p><strong>Pets:</strong> <span th:text="${roommate.pets}"></span></p>
+        <p><strong>Rent Budget:</strong> <span th:text="${roommate.rentBudget}"></span></p>
+        <p><strong>Living Arrangement:</strong> <span th:text="${roommate.livingArrangement}"></span></p>
+        <p><strong>Hobbies:</strong> <span th:text="${roommate.hobbies}"></span></p>
+    </div>
+</div>
+
+</body>
+</html>

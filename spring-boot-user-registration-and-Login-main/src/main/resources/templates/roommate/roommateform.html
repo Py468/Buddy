@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roommate Registration</title>
+
+    <link rel="stylesheet" th:href="@{/css/roommateformstyle.css}">
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+
+
+<div th:replace="~{authuser/authhome::authnav}"></div>
+
+<header>
+
+    <h1>Roommate Registration Form</h1>
+</header>
+
+<div class="form-container">
+    <div class="loader-overlay" id="loader" style="display: none;">
+        <div class="loader"></div>
+        <p>Submitting your application...</p>
+    </div>
+    <div class="success-message" id="successMessage" style="display: none;">
+        <div class="icon" style="font-size: 50px; color: #10b981;">✅</div>
+        <h2>Registration Successful! 🎉</h2>
+        <p>Your roommate registration has been submitted successfully.</p>
+        <button onclick="resetForm()" class="reset-button">Submit Another Response</button>
+    </div>
+
+
+    <form th:action="@{/roommate/register/buddy}" method="post" id="roommateForm" enctype="multipart/form-data" th:object="${request}">
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" th:field=*{name} id="name" name="name" required>
+        </div>
+
+        <div class="form-group">
+            <label for="age">Age:</label>
+            <input type="number" th:field="*{age}" id="age" name="age" required>
+        </div>
+        <div class="form-group">
+            <label for="age">Email:</label>
+            <input type="email" th:field="*{email}" id="email" name="age" required>
+        </div>
+
+        <div class="form-group">
+            <label for="gender">Gender:</label>
+            <select id="gender" th:field="*{gender}" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="occupation">Occupation:</label>
+            <select id="occupation" th:field="*{occupation}" name="occupation" required>
+                <option value="Freelancer">Freelancer</option>
+                <option value="Student">Student</option>
+                <option value="Working Professional">Working Professional</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="sleepSchedule">Sleep Schedule:</label>
+            <select id="sleepSchedule" th:field="*{sleepSchedule} " name="sleepSchedule">
+                <option value="Night Owl">Night Owl</option>
+                <option value="Flexible">Flexible</option>
+                <option value="Early Riser">Early Riser</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="personality">Personality:</label>
+            <select id="personality" th:field="*{personality}" name="personality">
+                <option value="Extrovert">Extrovert</option>
+                <option value="Introvert">Introvert</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="cleanliness">Cleanliness (1-5):</label>
+            <input type="range" th:field="*{cleanliness}" id="cleanliness" name="cleanliness" min="1" max="5" value="1">
+            <span id="cleanlinessValue">5</span>
+        </div>
+
+        <div class="form-group">
+            <label for="budgetRange">Budget Range (₹):</label>
+            <input type="text" th:field="*{budgetRange}" id="budgetRange" name="budgetRange" required>
+        </div>
+
+        <div class="form-group">
+            <label for="accommodationType">Accommodation Type:</label>
+            <select id="accommodationType" th:field="*{accommodationType}" name="accommodationType">
+                <option value="Hostel">Hostel</option>
+                <option value="PG">PG</option>
+                <option value="Flat">Flat</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="preferredArea">Preferred Area:</label>
+            <select id="preferredArea" th:field="*{preferredArea}" name="preferredArea">
+                <option value="Gamma">Gamma</option>
+                <option value="Alpha">Alpha</option>
+                <option value="Beta">Beta</option>
+                <option value="Knowledge-park">Knowledge Park</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel"  th:field=*{phoneNumber} id="phoneNumber" name="phoneNumber" required>
+        </div>
+
+        <div class="form-group">
+            <label for="preferredRoommates">Preferred Roommates:</label>
+            <input type="number" th:field="*{preferredRoommates}" id="preferredRoommates" name="preferredRoommates" min="1" max="5" value="1">
+        </div>
+
+        <div class="form-group">
+            <label>Interests:</label>
+            <div class="interests-grid">
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Photography"> Photography</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Music"> Music</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Cooking"> Cooking</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Movies"> Movies</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Fitness"> Fitness</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Sports"> Sports</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Travelling"> Travelling</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Gaming"> Gaming</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Reading"> Reading</label>
+                <label class="interest-item"><input type="checkbox" th:field="*{interests}" name="interests" value="Technology"> Technology</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="ratingPastRoommate">Rating of Past Roommate (1-5):</label>
+            <input type="range" th:field="*{ratingPastRoommate}" id="ratingPastRoommate" name="ratingPastRoommate" min="1" max="5" value="1">
+            <span id="ratingValue">5</span>
+        </div>
+
+        <div class="form-group">
+            <label for="socialActivityLevel">Social Activity Level:</label>
+            <select id="socialActivityLevel" th:field="*{socialActivityLevel}" name="socialActivityLevel">
+                <option value="Occasional Gatherings">Occasional Gatherings</option>
+                <option value="Party-friendly">Party-friendly</option>
+                <option value="Prefers-Quiet">Prefers-Quiet</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="photoRoommate">Upload Your Photo:</label>
+            <div class="file-upload">
+                <input type="file" id="photoRoommate" name="photoFile" accept="image/*" required>
+                <label for="photoRoommate" class="file-upload-label">Choose File</label>
+                <span id="fileName">No file chosen</span>
+            </div>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+<div th:replace="~{index::footer}"></div>
+<script th:src="@{/css/js/main.js}"></script>
+<script th:src="@{/css/js/script.js}"></script>
+
+
+</body>
+</html>

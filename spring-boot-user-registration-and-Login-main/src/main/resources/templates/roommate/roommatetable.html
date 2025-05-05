@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Roommate Requests</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+<h2>Roommate Requests</h2>
+
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Occupation</th>
+        <th>Budget Range</th>
+        <th>Preferred Area</th>
+        <th>Phone Number</th>
+        <th>Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="request : ${requests}">
+        <td th:text="${request.id}"></td>
+        <td th:text="${request.name}"></td>
+        <td th:text="${request.age}"></td>
+        <td th:text="${request.gender}"></td>
+        <td th:text="${request.occupation}"></td>
+        <td th:text="${request.budgetRange}"></td>
+        <td th:text="${request.preferredArea}"></td>
+        <td th:text="${request.phoneNumber}"></td>
+        <td>
+            <a th:href="@{/roommate/edit/{id}(id=${request.id})}">Edit</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

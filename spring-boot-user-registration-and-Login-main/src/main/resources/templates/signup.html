@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymelaf.og">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign Up - RoomFinder</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-brand">
+    <a href="/">RoomFinder</a>
+  </div>
+  <div class="nav-links">
+    <a href="@{/index}">Home</a>
+    <a th:href="@{/roommate/register/buddy}">RegisterAsBuddy</a>
+    <a th:href="@{/roommate/form}">MyPreference</a>
+    <a th:href="@{/roommate/reccommend}">Find Roommates</a>
+  </div>
+  <div class="nav-auth">
+    <button th:href="@{/login}" class="login-btn">Login</button>
+    <button th:href="@{/signup}"  class="signup-btn">Sign Up</button>
+  </div>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+
+<main>
+  <section class="signup-section">
+    <div class="signup-container">
+      <button class="close-btn" onclick="window.location.href='index'">
+        <i class="fas fa-times"></i>
+      </button>
+      <div th:if="${param.success}">
+        <div style="color:green" class="alert alert-info">
+          You have successfully registered our app!
+        </div>
+      </div>
+      <h1>Create Account</h1>
+      <p>Join RoomFinder to find your perfect room and roommate</p>
+
+      <form th:action= "@{/register/save}" method="post" th:object="${user}" class="signup-form" id="signupForm">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" th:field="*{firstName}" id="firstName" name="firstName" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <div class="input-with-icon">
+            <i class="fas fa-user"></i>
+            <input type="text" th:field="*{lastName}" id="lastName" name="lastName" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-with-icon">
+            <i class="fas fa-envelope"></i>
+            <input type="email" th:field="*{email}" id="email" name="email" required>
+          </div>
+        </div>
+        <div style="color:red;font-size:1rem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <div class="input-with-icon">
+            <i class="fas fa-phone"></i>
+            <input type="text" th:field="*{phoneNumber}" id="phoneNumber" name="phoneNumber" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <button type="button" onclick="sendOtpEmail()" class="signup-otp-btn" id="sendOtpBtn">Send OTP</button>
+          <p id="otpStatus" style="color: green; font-size: 0.9rem;"></p>
+        </div>
+
+        <div class="form-group">
+          <label for="otp">OTP</label>
+          <div class="input-with-icon">
+            <i class="fas fa-key"></i>
+            <input type="text" th:field="*{otp}" id="otp" name="otp" required>
+
+          </div>
+
+        </div>
+        <div style="color:red;font-size:1rem" th:if="${#fields.hasErrors('otp')}" th:errors="*{otp}" class="text-danger"></div>
+
+        <div class="form-group">
+          <label for="password">Password</label>
+          <div class="input-with-icon">
+            <i class="fas fa-lock"></i>
+            <input type="password" th:field="*{password}" id="password" name="password" required>
+            <i class="fas fa-eye toggle-password"></i>
+          </div>
+        </div>
+
+        <button type="submit" class="signup-submit-btn">Create Account</button>
+      </form>
+
+      <div class="signup-footer">
+        <p>Already have an account? <a th:href="@{/login}">Login</a></p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<script th:src="@{/css/js/signup.js}"></script>
+
+
+<script>
+  function sendOtpEmail() {
+  const email = document.querySelector('input[name="email"]').value;
+
+  fetch('/send-otp-email', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    },
+    body: 'email=' + encodeURIComponent(email)
+  })
+    .then(response => response.text())
+    .then(data => alert(data))
+    .catch(error => console.error('Error sending OTP:', error));
+}
+
+</script>
+
+
+
+</body>
+</html>

@@ -1,0 +1,239 @@
+/* Main Container Styles */
+.page-title {
+    text-align: center;
+    color: #2c3e50;
+    font-size: 2.5rem;
+    margin: 2rem 0;
+}
+
+/* Search Container Styles */
+.search-container {
+    background: white;
+    padding: 2rem;
+    margin-top: 5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.filter-form {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    align-items: flex-end;
+    justify-content: center;
+}
+
+.form-group-inline {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-group-inline label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.form-group-inline input {
+    width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.form-group-inline input:focus {
+    outline: none;
+    border-color: #3498db;
+    box-shadow: 0 0 0 2px rgba(52,152,219,0.2);
+}
+
+.btn {
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-submit {
+    background-color: #3498db;
+    color: white;
+}
+
+.btn-submit:hover {
+    background-color: #2980b9;
+}
+
+.btn-clear {
+    background-color: #e74c3c;
+    color: white;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-clear:hover {
+    background-color: #c0392b;
+}
+
+/* Room Container Styles */
+.room-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.room-card {
+    background: white;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.room-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.room-card h2 {
+    color: #2c3e50;
+    font-size: 1.4rem;
+    margin: 1rem;
+    font-weight: 600;
+}
+
+.room-card p {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+    color: #666;
+}
+
+.room-card strong {
+    color: #2c3e50;
+}
+
+.room-price {
+    color: #27ae60;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.room-details {
+    padding: 0 1rem;
+    margin-bottom: 1rem;
+}
+
+.view-details {
+    display: inline-block;
+    margin: 1rem;
+    padding: 0.75rem 1.5rem;
+    background-color: #3498db;
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.view-details:hover {
+    background-color: #2980b9;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .filter-form {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .form-group-inline {
+        width: 100%;
+    }
+
+    .room-container {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 1.5rem;
+        padding: 1rem;
+    }
+
+    .room-card img {
+        height: 180px;
+    }
+
+    .page-title {
+        font-size: 2rem;
+        margin: 1.5rem 0;
+    }
+}
+
+
+.img-thumbnail {
+    border-radius: 15px 15px 0 0;
+}
+
+.categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin: 32px auto;
+    max-width: 800px;
+    padding: 0 20px;
+}
+
+.category {
+    background: white;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.category.active {
+    background: #6B4E71;
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(107, 78, 113, 0.2);
+}
+
+.category .icon {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.category span {
+    font-weight: 500;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .categories {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+        padding: 0 16px;
+    }
+
+    .category {
+        padding: 16px;
+    }
+
+    .category .icon {
+        font-size: 24px;
+        margin-bottom: 8px;
+    }
+}

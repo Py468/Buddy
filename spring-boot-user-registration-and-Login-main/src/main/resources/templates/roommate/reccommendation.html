@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Roommate Recommendations</title>
+    <link rel="stylesheet" th:href="@{/css/roommate-styles.css}"/>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+
+
+
+
+<body>
+<div th:replace="~{authuser/authhome::authnav}"></div>
+
+<div class="container">
+    <h1>Find Your Best Buddy</h1>
+    <p class="subtitle">Connect with amazing people who share your interests</p>
+
+    <div th:if="${reccommendation}" class="buddy-grid" >
+        <div th:each="recommendation,iterStat:${reccommendation}" class="buddy-card">
+            <div class="buddy-image">
+                <img th:src="@{/images/{filename}(filename=${recommendation.photoRoommate})}" alt="Roommate Photo"/>
+
+            </div>
+
+
+            <div class="buddy-info">
+                <div class="buddy-header">
+                    <h2 th:text="${recommendation.name}" >Alex Thompson</h2>
+                    <span th:text="${recommendation.age}" class="age">28 yrs</span>
+                </div>
+                <div class="location">
+                    <span th:text="${recommendation.preferredArea}">San Francisco, CA</span>
+                </div>
+                <div class="location">
+                    <h3 th:text="${recommendation.budgetRange}">San Francisco, CA</h3>
+                </div>
+                <div class="interests">
+                <span
+                        th:each="interest : ${recommendation.interests}"
+                        th:text="${interest}"
+                        class="tag">
+    </span>
+                </div>
+                <button class="view-details" th:attr="onclick=|document.getElementById('modal-${iterStat.index}').showModal()|">View Details</button>
+                <form th:action="@{/roommate/connect}" method="post">
+                    <input type="hidden" name="targetRoommateId" th:value="${recommendation.id}" />
+
+                    <button type="submit">Connect</button>
+                </form>
+
+
+            </div>
+            <dialog th:id="'modal-' + ${iterStat.index}" class="modal">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <img th:src="@{/images/{filename}(filename=${recommendation.photoRoommate})}" alt="Roommate Photo"/>
+                        <div>
+                            <h3 th:text="${recommendation.name}">Alex Thompson</h3>
+                            <p th:text="${recommendation.preferredArea}">San Francisco, CA</p>
+                        </div>
+                    </div>
+                    <div class="modal-details">
+                        <p th:text="'Gender: ' + ${recommendation.gender}"></p>
+                        <p th:text="'Personality: ' + ${recommendation.personality}"></p>
+                        <p th:text="'Occupation: ' + ${recommendation.occupation}"></p>
+                        <p th:text="'Sleep Schedule: ' + ${recommendation.sleepSchedule}"></p>
+                        <p th:text="'Cleanliness: ' + ${recommendation.cleanliness}"></p>
+                        <p th:text="'Social Activity Level: ' + ${recommendation.socialActivityLevel}"></p>
+
+
+                        <div class="interests">
+                    <span th:each="interest : ${recommendation.interests}"
+                          th:text="${interest}"
+                          class="tag">
+                    </span>
+                        </div>
+                    </div>
+                    <button onclick="this.closest('dialog').close()">Close</button>
+                </div>
+            </dialog>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{index::footer}"></div>
+<script th:src="@{/css/js/main.js}"></script>
+<script th:src="@{/css/js/script.js}"></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Error Page | Stylish Design</title>
+    <link rel="stylesheet" th:href=@{"/css/reset.css}">
+    <link rel="stylesheet" th:href="@{/css/error.css}">
+</head>
+<body>
+<div class="error-container">
+    <div class="particles-container" id="particles"></div>
+
+    <div class="error-content">
+        <div class="error-icon">
+            <div class="error-circle"></div>
+            <div class="error-line"></div>
+        </div>
+
+        <h1 class="error-title">Page Not Found</h1>
+
+        <div class="error-code-container">
+            <span class="error-code-label">Error Code: </span>
+            <span class="error-code" id="errorCode"></span>
+        </div>
+
+        <p class="error-message">
+            The page you're looking for doesn't exist or has been moved.
+        </p>
+
+        <div class="error-actions">
+            <button class="error-button primary-button" id="homeButton">
+                <span class="button-text">Return Home</span>
+            </button>
+            <button class="error-button secondary-button" id="detailsButton">
+                <span class="button-text">View Details</span>
+            </button>
+        </div>
+
+        <div class="error-details" id="errorDetails">
+            <div class="error-details-content">
+                <p class="details-title">Technical Details</p>
+                <ul class="details-list">
+                    <li><span class="detail-label">Status:</span> 404 Not Found</li>
+                    <li><span class="detail-label">URL:</span> <span id="currentUrl"></span></li>
+                    <li><span class="detail-label">Browser:</span> <span id="browserInfo"></span></li>
+                    <li><span class="detail-label">Time:</span> <span id="timestamp"></span></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script type="module" th:src="@{/js/error.js}"></script>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Room</title>
+  <link rel="stylesheet" th:href="@{/css/editroomstyle.css}">
+</head>
+<body>
+<div class="form-container">
+  <h1>Edit Room</h1>
+  <form action="#" th:action="@{/rooms/{id}/edit(id=${room.id})}" th:object="${room}" method="post" enctype="multipart/form-data">
+    <!-- Room Title -->
+    <div class="form-group">
+      <label for="title">Room Title:</label>
+      <input type="text" th:field="*{title}" id="title" required>
+    </div>
+
+    <!-- City -->
+    <div class="form-group">
+      <label for="city">City:</label>
+      <select th:field="*{city}" id="city" required>
+        <option value="Noida" th:selected="${room.city == 'Noida'}">Noida</option>
+        <option value="Greater Noida" th:selected="${room.city == 'Greater Noida'}">Greater Noida</option>
+        <option value="Ghaziabad" th:selected="${room.city == 'Ghaziabad'}">Ghaziabad</option>
+        <option value="Delhi" th:selected="${room.city == 'Delhi'}">Delhi</option>
+        <option value="Bulandshahr" th:selected="${room.city == 'Bulandshahr'}">Bulandshahr</option>
+      </select>
+    </div>
+
+    <!-- Description -->
+    <div class="form-group">
+      <label for="description">Description:</label>
+      <textarea th:field="*{description}" id="description" required></textarea>
+    </div>
+
+    <!-- Price -->
+    <div class="form-group">
+      <label for="price">Price (₹):</label>
+      <input type="number" th:field="*{price}" id="price" step="0.01" required>
+    </div>
+
+    <!-- Guests -->
+    <div class="form-group">
+      <label for="guests">Number of Guests:</label>
+      <input type="number" th:field="*{guests}" id="guests" min="1" required>
+    </div>
+
+    <!-- Room Size -->
+    <div class="form-group">
+      <label for="roomsize">Room Size (sq ft):</label>
+      <input type="number" th:field="*{roomsize}" id="roomsize" min="50" required>
+    </div>
+
+    <!-- Contact Details -->
+    <div class="form-group">
+      <label for="contactdetails">Contact Details:</label>
+      <textarea th:field="*{contactdetails}" id="contactdetails" placeholder="Phone number and/or email" required></textarea>
+    </div>
+
+    <!-- Image -->
+    <div class="form-group">
+      <label for="image">Upload Image:</label>
+      <input type="file" name="imageFile" id="image">
+      <p th:if="${room.image}" style="margin-top: 10px;">
+        Current Image: <img th:src="@{'data:image/jpeg;base64,' + ${room.image}}" alt="Room Image" width="100" height="100"/>
+      </p>
+    </div>
+
+    <!-- Form Buttons -->
+    <div class="form-buttons">
+      <button type="submit" class="btn btn-submit">Update Room</button>
+      <a href="/rooms" class="btn btn-cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

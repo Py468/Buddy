@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Edit Roommate Request</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" th:href="@{/css/roommateformstyle.css}">
+</head>
+<body>
+
+<h2>Edit Roommate Request</h2>
+
+<form th:action="@{/roommate/edit/{id}(id=${request.id})}" th:object="${request}" method="post" enctype="multipart/form-data">
+  <label for="name">Name:</label>
+  <input type="text" id="name" th:field="*{name}" required>
+
+  <label for="age">Age:</label>
+  <input type="text" id="age" th:field="*{age}" required>
+
+  <label for="gender">Gender:</label>
+  <select id="gender" th:field="*{gender}" required>
+    <option value="Male">Male</option>
+    <option value="Female">Female</option>
+    <option value="Other">Other</option>
+  </select>
+
+  <label for="occupation">Occupation:</label>
+  <select id="occupation" th:field="*{occupation}" required>
+    <option value="Freelancer">Freelancer</option>
+    <option value="Student">Student</option>
+    <option value="Working Professional">Working Professional</option>
+  </select>
+
+  <label for="sleepSchedule">Sleep Schedule:</label>
+  <select id="sleepSchedule" th:field="*{sleepSchedule}">
+    <option value="Night Owl">Night Owl</option>
+    <option value="Flexible">Flexible</option>
+    <option value="Early Riser">Early Riser</option>
+  </select>
+
+  <label for="personality">Personality:</label>
+  <select id="personality" th:field="*{personality}">
+    <option value="Extrovert">Extrovert</option>
+    <option value="Introvert">Introvert</option>
+  </select>
+
+  <label for="cleanliness">Cleanliness (1-5):</label>
+  <input type="number" id="cleanliness" th:field="*{cleanliness}" min="1" max="10">
+
+  <label for="budgetRange">Budget Range (₹):</label>
+  <input type="text" id="budgetRange" th:field="*{budgetRange}" required>
+
+  <label for="accommodationType">Accommodation Type:</label>
+  <select id="accommodationType" th:field="*{accommodationType}">
+    <option value="Hostel">Hostel</option>
+    <option value="PG">PG</option>
+    <option value="Flat">Flat</option>
+  </select>
+
+  <label for="preferredArea">Preferred Area:</label>
+  <select id="preferredArea" th:field="*{preferredArea}">
+    <option value="Gamma">Gamma</option>
+    <option value="Alpha">Alpha</option>
+    <option value="Beta">Beta</option>
+    <option value="Knowledge-park">Knowledge Park</option>
+  </select>
+
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="tel" id="phoneNumber" th:field="*{phoneNumber}" required>
+
+  <label for="preferredRoommates">Preferred Roommates:</label>
+  <input type="number" id="preferredRoommates" th:field="*{preferredRoommates}" min="1">
+
+  <label for="interests">Interests:</label>
+  <div class="checkbox-group">
+    <label><input type="checkbox" th:field="*{interests}" value="Photography"> Photography</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Music"> Music</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Cooking"> Cooking</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Movies"> Movies</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Fitness"> Fitness</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Sports"> Sports</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Travelling"> Travelling</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Gaming"> Gaming</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Reading"> Reading</label>
+    <label><input type="checkbox" th:field="*{interests}" value="Technology"> Technology</label>
+  </div>
+
+  <label for="ratingPastRoommate">Rating of Past Roommate (1-5):</label>
+  <input type="number" id="ratingPastRoommate" th:field="*{ratingPastRoommate}" min="1" max="10">
+
+  <label for="socialActivityLevel">Social Activity Level:</label>
+  <select id="socialActivityLevel" th:field="*{socialActivityLevel}">
+    <option value="Occasional Gatherings">Occasional Gatherings</option>
+    <option value="Party-friendly">Party-friendly</option>
+    <option value="Prefers-Quiet">Prefers-Quiet</option>
+  </select>
+
+  <label for="photoFile">Upload Your Photo:</label>
+  <input type="file" id="photoFile" name="photoFile">
+
+  <label for="photoRoomFile">Upload Room Photo:</label>
+  <input type="file" id="photoRoomFile" name="photoRoomFile">
+
+  <button type="submit">Update</button>
+</form>
+
+</body>
+</html>

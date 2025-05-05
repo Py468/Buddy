@@ -1,0 +1,119 @@
+ body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+  }
+
+  /* Page Heading */
+  h1 {
+    text-align: center;
+    color: #007bff;
+    font-size: 2rem;
+    margin-bottom: 20px;
+  }
+
+  /* Table Styling */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px auto;
+    background-color: #ffffff;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  thead {
+    background-color: #007bff;
+    color: #ffffff;
+  }
+
+  thead th {
+    padding: 15px;
+    text-align: left;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+
+  tbody tr {
+    transition: background-color 0.3s ease;
+  }
+
+  tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  tbody tr:hover {
+    background-color: #eaf3ff;
+  }
+
+  tbody td {
+    padding: 12px 15px;
+    font-size: 0.95rem;
+    text-align: left;
+  }
+
+  tbody td.action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+
+  /* Buttons Styling */
+  a.btn-edit,
+  a.btn-view,
+  a.btn-delete {
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+
+  a.btn-edit {
+    background-color: #28a745;
+    color: #ffffff;
+  }
+
+  a.btn-edit:hover {
+    background-color: #218838;
+  }
+
+  a.btn-view {
+    background-color: #17a2b8;
+    color: #ffffff;
+  }
+
+  a.btn-view:hover {
+    background-color: #138496;
+  }
+
+  a.btn-delete {
+    background-color: #dc3545;
+    color: #ffffff;
+  }
+
+  a.btn-delete:hover {
+    background-color: #c82333;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    table {
+      font-size: 0.85rem;
+    }
+
+    thead th,
+    tbody td {
+      padding: 10px;
+    }
+
+    a.btn-edit,
+    a.btn-view,
+    a.btn-delete {
+      padding: 6px 10px;
+      font-size: 0.8rem;
+    }
+  }

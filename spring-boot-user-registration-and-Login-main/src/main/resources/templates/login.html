@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.og">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/loginstyle.css}"/>
+</head>
+<body>
+<div th:replace="~{index :: navbar}"></div>
+<div class="container">
+
+    <div class="login-box">
+
+        <div class="login-header">
+            <h2>Welcome Back</h2>
+            <p>Please sign in to continue</p>
+        </div>
+
+        <form class="login-form" th:action="@{/login}" method="post">
+            <div th:if="${param.error}">
+                <p style="color:red"> Invalid id or Password</p>
+            </div>
+            <div class="input-group">
+                <label for="username">Username</label>
+                <input type="text" id="username" name="username" placeholder="Enter your username" required>
+            </div>
+            <div class="input-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+            </div>
+
+            <button type="submit" class="login-button">Sign In</button>
+            <div class="signup-link">
+                Don't have an account? <a th:href="@{/signup}">Sign up</a>
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+<script th:src="@{/css/js/main.js}"></script>
+</html>

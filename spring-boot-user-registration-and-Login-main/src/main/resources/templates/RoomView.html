@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Available Rooms</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/roomviewstyle.css}">
+</head>
+<body>
+
+<div th:replace="~{index :: navbar}"></div>
+
+<!-- Add Categories Section -->
+
+
+<div class="search-container">
+    <form action="/rooms/filter" method="get" class="filter-form">
+        <div class="form-group-inline">
+            <label for="city">City:</label>
+            <input type="text" id="city" name="city" th:value="${selectedCity}" placeholder="Enter city">
+        </div>
+
+        <div class="form-group-inline">
+            <label for="minPrice">Min Price:</label>
+            <input type="number" id="minPrice" name="minPrice" th:value="${minPrice}" placeholder="Min price">
+        </div>
+
+        <div class="form-group-inline">
+            <label for="maxPrice">Max Price:</label>
+            <input type="number" id="maxPrice" name="maxPrice" th:value="${maxPrice}" placeholder="Max price">
+        </div>
+
+        <button type="submit" class="btn btn-submit">Search</button>
+        <a href="/rooms/filter" class="btn btn-clear">Clear</a>
+    </form>
+</div>
+<div class="categories">
+    <div class="category active">
+        <div class="icon">🏢</div>
+        <span>Flat</span>
+    </div>
+    <div class="category">
+        <div class="icon">🏠</div>
+        <span>House</span>
+    </div>
+    <div class="category">
+        <div class="icon">🛏️</div>
+        <span>Room</span>
+    </div>
+</div>
+
+<h1 class="page-title">Available Rooms</h1>
+
+<div class="room-container">
+    <div th:each="room : ${rooms}" class="room-card">
+        <img th:if="${room.image != null}"
+             th:src="@{/{roomId}/image(roomId=${room.id})}"
+             class="img-thumbnail"
+             alt="Room Image">
+        <h2 th:text="${room.title}"></h2>
+        <p><strong>City:</strong> <span th:text="${room.city}"></span></p>
+        <div class="room-details">
+            <p th:text="${room.description}"></p>
+        </div>
+        <p>Price: ₹ <span class="room-price" th:text="${room.price}"></span></p>
+        <a th:href="@{/rooms/details/{id}(id=${room.id})}" class="view-details">View Details</a>
+    </div>
+</div>
+
+
+
+</body>
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const categories = document.querySelectorAll('.category');
+        categories.forEach(category => {
+            category.addEventListener('click', () => {
+                categories.forEach(c => c.classList.remove('active'));
+                category.classList.add('active');
+            });
+        });
+    });
+</script>
+</html>

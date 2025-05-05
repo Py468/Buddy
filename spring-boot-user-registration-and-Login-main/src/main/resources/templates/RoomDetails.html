@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Room Details</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/roomdetailstyle.css}"/>
+</head>
+<body>
+<header>
+  <div th:replace="~{index :: navbar}"></div>
+  <h1>Room Details</h1>
+</header>
+
+<div class="room-details-container">
+  <div class="room-card">
+    <h2 class="room-title" th:text="${room.title}">Room Title</h2>
+    <p class="room-city"><strong>City:</strong> <span th:text="${room.city}">City Name</span></p>
+    <p class="room-description"><strong>Description:</strong> <span th:text="${room.description}">Room Description</span></p>
+    <p class="room-price"><strong>Price:</strong> ₹<span th:text="${room.price}">Price</span> per night</p>
+    <p class="room-guests"><strong>Number of Guests:</strong> <span th:text="${room.guests}">Number of Guests</span></p>
+    <p class="room-size"><strong>Room Size:</strong> <span th:text="${room.roomsize}">Room Size</span> sq ft</p>
+    <p class="room-contact"><strong>Contact:</strong> <span th:text="${room.contactdetails}">Contact Details</span></p>
+
+    <!-- Image of the room -->
+    <div class="room-image">
+      <img th:if="${imageBase64}" th:src="${imageBase64}" alt="Room Image" />
+
+    </div>
+  </div>
+
+  <!-- Back button -->
+  <div class="back-button-container">
+    <a href="/rooms" class="back-button">
+      <button>Back to Room List</button>
+    </a>
+  </div>
+</div>
+
+</body>
+</html>

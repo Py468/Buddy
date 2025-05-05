@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img th:src="@{/css/images/{filename}(filename=${roommate.photoRoom})}" alt="Room Image">
+<img th:src="@{/css/images/{filename}(filename=${roommate.photoRoommate})}" alt="Roommate Image">
+
+
+</body>
+</html>

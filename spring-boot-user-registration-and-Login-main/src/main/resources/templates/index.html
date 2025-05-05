@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RoomFinder - Find Your Perfect Room & Roommate</title>
+  <link rel="stylesheet" th:href="@{css/style.css}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+<div th:fragment="navbar">
+<nav class="navbar">
+  <div class="nav-brand">
+    <a href="/">RoomFinder</a>
+  </div>
+  <div class="nav-links">
+    <a th:href="@{/index}">Home</a>
+
+    <a th:href="@{/roommate/register/buddy}">RegisterAsBuddy</a>
+    <a th:href="@{/roommate/form}">MyPreference</a>
+    <a th:href="@{/roommate/reccommend}">Find Roommates</a>
+  </div>
+
+  <div class="nav-auth">
+    <a th:href="@{/login}"><button class="login-btn">Login</button></a>
+    <a th:href="@{/signup}"><button class="signup-btn">Sign Up</button></a>
+  </div>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+</div>
+<div th:fragment="hero">
+<main>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Find Your <span class="changing-text">Perfect Room</span></h1>
+      <p>Discover comfortable rooms and compatible roommates in your desired location</p>
+
+      <div class="search-container">
+        <div class="search-box">
+          <div class="search-input">
+            <i class="fas fa-map-marker-alt"></i>
+            <input type="text" placeholder="Enter city or area">
+          </div>
+          <div class="search-input">
+            <i class="fas fa-dollar-sign"></i>
+            <input type="number" placeholder="Budget (max)">
+          </div>
+          <button class="search-btn">Search</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features">
+    <h2>What We Offer</h2>
+    <div class="features-grid">
+      <div class="feature-card">
+        <i class="fas fa-home"></i>
+        <h3>Find Rooms</h3>
+        <p>Discover perfect rooms matching your preferences and budget</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-users"></i>
+        <h3>Find Roommates</h3>
+        <p>Connect with compatible roommates sharing your interests</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-filter"></i>
+        <h3>Smart Filters</h3>
+        <p>Filter by location, budget, amenities, and preferences</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-shield-alt"></i>
+        <h3>Verified Listings</h3>
+        <p>All rooms and profiles are verified for your safety</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="services" id="services">
+    <h2>Our Services</h2>
+    <div class="services-grid">
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1522771739844-6a9f6d5f14af?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Room Listing">
+        <h3>Room Listings</h3>
+        <p>Browse through verified room listings with detailed information, photos, and amenities.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Roommate Matching">
+        <h3>Roommate Matching</h3>
+        <p>Find compatible roommates based on lifestyle, interests, and preferences.</p>
+      </div>
+      <div class="service-card">
+        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?ixlib=rb-1.2.1&auto=format&fit=crop&w=1950&q=80" alt="Property Management">
+        <h3>Virtual Tours</h3>
+        <p>Take virtual tours of properties from the comfort of your home.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="contact-container">
+      <div class="contact-info">
+        <h2>Contact Us</h2>
+        <p>Have questions? We're here to help!</p>
+        <div class="contact-details">
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <p>aayushtyagi078@gmail.com</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-phone"></i>
+            <p>+91 7820028855</p>
+          </div>
+          <div class="contact-item">
+            <i class="fas fa-map-marker-alt"></i>
+            <p>Greater Noida, Parichowk</p>
+          </div>
+        </div>
+      </div>
+      <form class="contact-form">
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit" class="submit-btn">Send Message</button>
+      </form>
+    </div>
+  </section>
+</main>
+</div>
+<footer class="footer">
+  <div class="footer-content">
+    <div class="footer-section">
+      <h3>RoomFinder</h3>
+      <p>Making room hunting and roommate finding easier for everyone.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+      </div>
+    </div>
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#rooms">Find Rooms</a></li>
+        <li><a href="#roommates">Find Roommates</a></li>
+        <li><a href="#about">About Us</a></li>
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Services</h3>
+      <ul>
+
+        <li><a href="#services">Roommate Matching</a></li>
+        <li><a href="#services">Virtual Tours</a></li>
+
+      </ul>
+    </div>
+    <div class="footer-section">
+      <h3>Newsletter</h3>
+      <p>Subscribe to our newsletter for updates and offers.</p>
+      <div class="newsletter-form">
+        <input type="email" placeholder="Your Email">
+        <button type="submit">Subscribe</button>
+      </div>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2024 RoomFinder. All rights reserved.</p>
+  </div>
+</footer>
+
+<script th:src="@{css/js/main.js}"></script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Connection Success</title>
+  <link rel="stylesheet" th:href="@{/css/successconnect.css}"/>
+  <link rel="stylesheet" th:href="@{/css/recomendationstyle.css}"/>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<div th:replace="~{authuser/authhome::authnav}"></div>
+
+<div class="container">
+  <div class="success-message show">
+    <div class="success-icon"></div>
+    <h3 class="success-title">Successfully Connected!</h3>
+    <p class="success-description">Your request has been sent to the roommate. They will be notified of your interest in connecting.</p>
+    <a th:href="@{/roommate/reccommend}" class="success-button">Back to Recommendations</a>
+  </div>
+</div>
+
+<div th:replace="~{index::footer}"></div>
+<script th:src="@{/css/js/main.js}"></script>
+</body>
+</html>

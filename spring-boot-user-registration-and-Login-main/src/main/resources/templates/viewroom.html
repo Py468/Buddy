@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>Room Details</title>
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/adminroomview.css}">
+</head>
+<body>
+<div th:replace="~{index :: navbar}"></div>
+<div class="room-details-container">
+  <h1 th:text="${room.title}"></h1>
+  <p><strong>City:</strong> <span th:text="${room.city}"></span></p>
+  <p><strong>Description:</strong> <span th:text="${room.description}"></span></p>
+  <p><strong>Price:</strong> ₹<span th:text="${room.price}"></span></p>
+
+  <div class="room-image">
+    <img th:if="${imageBase64}" th:src="${imageBase64}" alt="Room Image" />
+
+  </div>
+
+  <a href="/rooms" class="btn btn-back">Back to List</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymleaf.org">
+<head>
+    <meta charset="UTF-8">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+    <title>Title</title>
+</head>
+<body>
+<div th:fragment="authnav">
+<nav  class="navbar">
+  <div class="nav-brand">
+    <a href="/">RoomFinder</a>
+  </div>
+  <div class="nav-links">
+    <a th:href="@{/user/home}">Home</a>
+<!--    <a th:href="@{/rooms/filter}">Find Rooms</a>-->
+    <a th:href="@{/roommate/register/buddy}">RegisterAsBuddy</a>
+    <a th:href="@{/roommate/form}">MyPreference</a>
+    <a th:href="@{/roommate/reccommend}">Find Roommates</a>
+
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="nav-auth">
+
+    <a th:href="@{/logout}"><button class="signup-btn">Logout</button></a>
+  </div>
+  <div class="hamburger">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</nav>
+</div>
+<div th:replace="~{index::hero}"></div>
+<div th:replace="~{index::footer}"></div>
+<script th:src="@{/css/js/main.js}"></script>
+<script th:src="@{/css/js/script.js}"></script>
+</body>
+
+</html>

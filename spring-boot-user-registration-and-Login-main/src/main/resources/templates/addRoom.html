@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Add New Room</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" th:href="@{/css/style.css}">
+  <link rel="stylesheet" th:href="@{/css/addRoomstyle.css}" />
+</head>
+<body>
+<div th:replace="~{index :: navbar}"></div>
+<form th:action="@{/rooms/add}" th:object="${room}" enctype="multipart/form-data" method="post">
+  <!-- Room Title -->
+  <label for="title">Room Title:</label>
+  <input type="text" id="title" name="title" th:field="*{title}" placeholder="Enter room title" required />
+  <br><br>
+
+  <!-- City -->
+  <label for="city">City:</label>
+  <select id="city" name="city" th:field="*{city}" required>
+    <option value="" disabled selected>Select a city</option>
+    <option value="Noida">Noida</option>
+    <option value="Greater Noida">Greater Noida</option>
+    <option value="Ghaziabad">Ghaziabad</option>
+    <option value="Delhi">Delhi</option>
+    <option value="Bulandshahr">Bulandshahr</option>
+  </select>
+  <br><br>
+
+
+  <!-- Description -->
+  <label for="description">Description:</label>
+  <textarea id="description" name="description" th:field="*{description}" placeholder="Enter room description" required></textarea>
+  <br><br>
+
+  <!-- Price -->
+  <label for="price">Price (₹):</label>
+  <input type="number" id="price" name="price" th:field="*{price}" placeholder="Enter price" step="0.01" required />
+  <br><br>
+
+  <!-- Guests -->
+  <label for="guests">Maximum Guests:</label>
+  <input type="number" id="guests" name="guests" th:field="*{guests}" placeholder="Enter maximum number of guests" required />
+  <br><br>
+
+  <!-- Room Size -->
+  <label for="roomsize">Room Size (sq. ft):</label>
+  <input type="number" id="roomsize" name="roomsize" th:field="*{roomsize}" placeholder="Enter room size in square feet" step="0.01" required />
+  <br><br>
+
+  <!-- Image -->
+  <label for="imageFile">Room Image:</label>
+  <input type="file" id="imageFile" name="imageFile" th:field="*{imageFile}" required />
+  <br><br>
+
+  <!-- Contact Details -->
+  <label for="contactdetails">Contact Details:</label>
+  <textarea id="contactdetails" name="contactdetails" th:field="*{contactdetails}" placeholder="Enter contact details (e.g., email or phone number)" required></textarea>
+  <br><br>
+
+  <!-- Submit Button -->
+  <button type="submit">Add Room</button>
+</form>
+</body>
+</html>

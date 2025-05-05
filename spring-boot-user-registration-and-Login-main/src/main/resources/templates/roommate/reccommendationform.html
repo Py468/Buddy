@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roommate Preferences</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+    <link rel="stylesheet" th:href="@{/css/roommaterecform.css}">
+</head>
+<body>
+<div th:replace="~{authuser/authhome::authnav}"></div>
+<div class="form-container">
+    <div class="form-header">
+        <h1>Find Your Perfect Roommate</h1>
+        <p>Tell us about your preferences to find the best match</p>
+    </div>
+
+    <form action="#" th:action="@{/roommate/savePreference}" th:object="${roommatePreferences}" method="post">
+        <!-- Housing Section -->
+        <div class="form-group">
+            <label for="accommodationType">Accommodation Type</label>
+            <select
+                    id="accommodationType"
+                    th:field="*{accommodationType}"
+                    required
+            >
+                <option value="">Select Accommodation Type</option>
+                <option value="Hostel">Hostel</option>
+                <option value="PG">PG</option>
+                <option value="Flat">Flat</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="preferredArea">Preferred Area</label>
+            <select
+                    id="preferredArea"
+                    th:field="*{preferredArea}"
+                    required
+            >
+                <option value="">Select Preferred Area</option>
+                <option value="Alpha">Alpha</option>
+                <option value="Beta">Beta</option>
+                <option value="Gamma">Gamma</option>
+                <option value="Knowledge Park">Knowledge Park</option>
+
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="budgetRange">
+                Monthly Budget: <span id="budgetValue">$1500</span>
+            </label>
+            <input
+                    type="range"
+                    id="budgetRange"
+                    th:field="*{budgetRange}"
+                    min="5000"
+                    max="15000"
+                    step="50"
+                    value="15000"
+            />
+            <div class="range-labels">
+                <span>$500</span>
+                <span>$5000</span>
+            </div>
+        </div>
+
+        <!-- Personal Section -->
+        <div class="form-group">
+            <label for="gender">Gender</label>
+            <select id="gender" th:field="*{gender}" required>
+                <option value="">Select Gender</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="personality">Personality</label>
+            <select id="personality" th:field="*{personality}" required>
+                <option value="">Select Personality Type</option>
+                <option value="Introvert">Introvert</option>
+                <option value="Extrovert">Extrovert</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="occupation">Occupation</label>
+            <select id="occupation" th:field="*{occupation}" required>
+                <option value="">Select Occupation</option>
+                <option value="Freelancer">Freelancer</option>
+                <option value="Student">Student</option>
+                <option value="Working Professional">Working Professional</option>
+            </select>
+        </div>
+
+        <!-- Lifestyle Section -->
+        <div class="form-group">
+            <label for="sleepSchedule">Sleep Schedule</label>
+            <select id="sleepSchedule" th:field="*{sleepSchedule}" required>
+                <option value="">Select Sleep Schedule</option>
+                <option value="Night Owl">Night Owl</option>
+                <option value="Flexible">Flexible</option>
+                <option value="Early Riser">Early Riser</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label>Interests</label>
+            <div class="checkbox-group">
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Photography"/>
+                    Photography
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Music"/>
+                    Music
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Cooking"/>
+                    Cooking
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Movies"/>
+                    Movies
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Fitness"/>
+                    Fitness
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Sports"/>
+                    Sports
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Travelling"/>
+                    Travelling
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Gaming"/>
+                    Gaming
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Reading"/>
+                    Reading
+                </label>
+                <label>
+                    <input type="checkbox" th:field="*{interests}" value="Technology"/>
+                    Technology
+                </label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="cleanlinessPreference">
+                Cleanliness Preference: <span id="cleanlinessValue">3</span>/5
+            </label>
+            <input
+                    type="range"
+                    id="cleanlinessPreference"
+                    th:field="*{cleanlinessPreference}"
+                    min="1"
+                    max="5"
+                    value="3"
+            />
+        </div>
+
+        <div class="form-group">
+            <label for="socialActivityLevel">Social Activity Level</label>
+            <select id="socialActivityLevel" th:field="*{socialActivityLevel}" required>
+                <option value="">Select Activity Level</option>
+                <option value="Occasional Gatherings">Occasional Gatherings</option>
+                <option value="Party-friendly">Party-friendly</option>
+                <option value="Prefers-Quiet">Prefers Quiet</option>
+            </select>
+        </div>
+
+        <button type="submit">Find Roommate</button>
+    </form>
+</div>
+
+<div th:replace="~{index::footer}"></div>
+<script th:src="@{/css/js/main.js}"></script>
+<script>
+    // Update range input displays
+    document.getElementById('budgetRange').addEventListener('input', function(e) {
+        document.getElementById('budgetValue').textContent = '$' + e.target.value;
+    });
+
+    document.getElementById('cleanlinessPreference').addEventListener('input', function(e) {
+        document.getElementById('cleanlinessValue').textContent = e.target.value;
+    });
+
+    // Add animation delay to form groups
+    document.querySelectorAll('.form-group').forEach((group, index) => {
+        group.style.animationDelay = `${index * 0.1}s`;
+    });
+
+    // Smooth scroll to invalid fields
+    document.querySelector('form').addEventListener('invalid', (function() {
+        return function(e) {
+            e.preventDefault();
+            e.target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'center'
+            });
+        };
+    })(), true);
+</script>
+</body>
+</html>
