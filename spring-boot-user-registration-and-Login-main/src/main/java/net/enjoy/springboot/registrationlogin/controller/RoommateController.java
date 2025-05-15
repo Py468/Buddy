@@ -54,7 +54,7 @@ public class RoommateController {
     @GetMapping("/roommate/register/buddy")
     public String showRegistrationdPageBuddy(Model model) {
         model.addAttribute("request", new RoommateRequest());
-        return "/roommate/roommateform";
+        return "roommate/roommateform";
     }
     @InitBinder
     public void initBinder(WebDataBinder binder) {
@@ -89,7 +89,7 @@ public class RoommateController {
         repository.save(request);
         model.addAttribute("request", request);
         model.addAttribute("successMessage", "Request sent successfully");
-        return "/roommate/roommateform";
+        return "roommate/roommateform";
     }
     @GetMapping("/images/{filename}")
     @ResponseBody
